@@ -1,0 +1,58 @@
+"""
+Assignment Day 1: Python Foundation
+
+Problem Statement:
+You are tasked with simulating the placement of stars in the sky. Given a world with coordinates ranging from -110000 to 110000 on both the x and y axes, you need to generate 500 stars (represented as dots) in a random manner such that the minimum distance between any two stars is at least 5000 units. The positions of the stars should be generated using a fixed seed value to ensure that the star positions are reproducible across multiple executions. Finally, you must plot these stars on a 2D plane using Matplotlib.
+
+"""
+
+import matplotlib.pyplot as plt
+import random
+import math
+
+# Function to generate stars with the minimum distance constraint
+def generate_stars(num_stars, min_distance, x_range, y_range, seed_value):
+    random.seed(seed_value)  # Set the seed for reproducibility
+    stars = []
+
+    # Helper function to check if a new star is at least min_distance away from all others
+    def is_valid_position(new_star):
+        for star in stars:
+            dist = math.sqrt((new_star[0] - star[0])**2 + (new_star[1] - star[1])**2)
+            if dist < min_distance:
+                return False
+        return True
+
+    # Generate stars
+    while len(stars) < num_stars:
+        # Generate a random position within the range
+        new_star = (random.randint(x_range[0], x_range[1]), random.randint(y_range[0], y_range[1]))
+
+        # Check if the new star is valid (meets the distance constraint)
+        if is_valid_position(new_star):
+            stars.append(new_star)
+
+    return stars
+
+# Parameters
+num_stars = 500
+min_distance = 5000
+x_range = (-110000, 110000)
+y_range = (-110000, 110000)
+seed_value = 42  # Fixed seed for reproducibility
+
+# Generate the stars
+stars = generate_stars(num_stars, min_distance, x_range, y_range, seed_value)
+
+# Plot the stars
+x_coords = [star[0] for star in stars]
+y_coords = [star[1] for star in stars]
+
+plt.figure(figsize=(10, 10))
+plt.scatter(x_coords, y_coords, s=1, color='white')
+plt.title("Star Placement in the Sky")
+plt.xlim(x_range)
+plt.ylim(y_range)
+plt.gca().set_facecolor('black')
+plt.gca().set_aspect('equal', adjustable='box')
+plt.show()

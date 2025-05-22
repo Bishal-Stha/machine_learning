@@ -1,0 +1,47 @@
+"""
+2. Optimization in Delivery Route
+Objective: Use gradient descent to find the shortest delivery route.
+Problem:
+A delivery company is testing a new algorithm to optimize delivery routes. The company uses a simple cost function:
+    C(x)=(x-3)^2 + 5
+Use gradient descent to minimize the cost function. Start with x=10, a learning rate of 0.1, and run for 15 iterations.
+Plot the cost at each iteration.
+Explain how gradient descent helps find the optimal route in real-world scenarios.
+"""
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def cost_function(x):
+    return (x+3)**2 + 5
+
+def derivative_cost(x):
+    return 2*(x+3)
+
+x=10
+learning_rate=0.1
+iteration=15
+
+x_values=[x]
+cost_values = [cost_function(x)]
+
+
+# Perform gradient descent
+for i in range(iteration):
+    gradient = derivative_cost(x)
+    x = x - learning_rate * gradient
+    x_values.append(x)
+    cost_values.append(cost_function(x))
+
+# Plot cost at each iteration
+plt.figure(figsize=(8, 6))
+plt.plot(range(iteration + 1), cost_values, marker='o', color='b')
+plt.title("Cost Function Value at Each Iteration", fontsize=14)
+plt.xlabel("Iteration", fontsize=12)
+plt.ylabel("Cost", fontsize=12)
+plt.grid()
+plt.show()
+
+# Final output
+print("Final value of x:", x)
+print("Minimum cost:", cost_function(x))

@@ -1,0 +1,50 @@
+"""3. Calculus in Machine Learning Loss Functions
+Objective: Explore the role of differentiation in training models.
+Problem:
+The accuracy of a machine learning model is measured using the function:
+A(w) =-w^2+4w+6
+where www is a weight parameter.
+Find the derivative of A(w)and determine the weight www that maximizes the accuracy.
+Plot the function A(w) and its derivative to verify your solution.
+Discuss how gradients are used in machine learning to adjust weights for better accuracy."""
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the accuracy function and its derivative
+def A(w):
+    return -w**2 + 4*w + 6
+
+def dA_dw(w):
+    return -2*w + 4
+
+# Generate values for w
+w_values = np.linspace(-2, 6, 100)
+A_values = A(w_values)
+dA_values = dA_dw(w_values)
+
+# Plot A(w)
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 2, 1)
+plt.plot(w_values, A_values, label="A(w)", color="blue")
+plt.axvline(x=2, color="red", linestyle="--", label="w = 2 (max)")
+plt.title("Accuracy Function A(w)", fontsize=14)
+plt.xlabel("w", fontsize=12)
+plt.ylabel("A(w)", fontsize=12)
+plt.legend()
+plt.grid()
+
+# Plot dA/dw
+plt.subplot(1, 2, 2)
+plt.plot(w_values, dA_values, label="dA/dw", color="green")
+plt.axhline(y=0, color="red", linestyle="--", label="dA/dw = 0")
+plt.title("Derivative of A(w)", fontsize=14)
+plt.xlabel("w", fontsize=12)
+plt.ylabel("dA/dw", fontsize=12)
+plt.legend()
+plt.grid()
+
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,36 @@
+"""
+1. Linear Algebra in Real Life
+Objective: Apply matrix operations to a real-world scenario.
+Problem:
+A small café tracks its daily sales for three products: coffee, sandwiches, and cakes. The sales for three days are recorded as:
+Day 1: [100 coffees, 50 sandwiches, 30 cakes]
+Day 2: [120 coffees, 70 sandwiches, 40 cakes]
+Day 3: [90 coffees, 60 sandwiches, 20 cakes]
+The prices for the products are:
+Coffee: $2 each
+Sandwich: $5 each
+Cake: $4 each
+Represent the sales and prices as matrices.
+Compute the total revenue for each day using matrix multiplication.
+Calculate the transpose of the sales matrix and explain its significance.
+"""
+import numpy as np
+matrix_sales = np.array([ #rows denotes the different days of sales.
+    [100, 50, 30],
+    [120, 70, 40],
+    [90, 60, 20]
+])
+
+matrix_price = np.array([
+    [2],
+    [5],
+    [4]
+])
+
+matrix_revenue = np.dot(matrix_sales, matrix_price)
+matrix_Transpose = np.transpose(matrix_sales)
+
+print(f"Sales is represented as a matrix below:\n{matrix_sales}")
+print(f"Price is represented as a matrix below:\n{matrix_price}")
+print(f"Revenue:\n {matrix_revenue}")
+print(f"Transpose:\n {matrix_Transpose}")
