@@ -87,7 +87,7 @@ def load_data():
 @st.cache_resource
 def prepare_similarity_matrix(df):
     tfidf = TfidfVectorizer(max_features=5000)
-    tf_vectors = tfidf.fit_transform(df["data"]).toarray()
+    tf_vectors = tfidf.fit_transform(df["data"]).toarray() # type: ignore
     tf_similarity = cosine_similarity(tf_vectors)
     return tf_similarity
 
