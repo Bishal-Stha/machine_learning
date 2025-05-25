@@ -1,0 +1,84 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 1000000,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "QpaTDwAAQBAJ",
+            "etag": "VhySqI6U2SU",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/QpaTDwAAQBAJ",
+            "volumeInfo": {
+                "title": "Marvel's Avengers",
+                "subtitle": "Infinity War - The Art Of The Movie",
+                "authors": [
+                    "Eleni Roussos"
+                ],
+                "publisher": "Marvel Entertainment",
+                "publishedDate": "2019-04-24",
+                "description": "Continuing their popular Art Of series, Marvel Studios presents its biggest achievement yet: Marvel Studios’ Avengers: Infinity War! A threat has emerged from the cosmos: Thanos, a ruthless warlord who plans to collect all six Infinity Stones. Joined by his formidable allies, he will be near unstoppable at achieving his goal. The Avengers, the Guardians of the Galaxy, Doctor Strange and Spider-Man must join forces and fight side by side to stop Thanos, while the fate of the Earth and the universe lies in the balance! Now, go behind the scenes with this keepsake volume! Filled with exclusive concept art for character, costume and set designs, as well as in-depth interviews with the filmmakers, Marvel’s Avengers: Infinity War — The Art of the Movie provides exciting insider details about the making of this blockbuster film!",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781302507886"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1302507885"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 342,
+                "printType": "BOOK",
+                "categories": [
+                    "Comics & Graphic Novels"
+                ],
+                "averageRating": 5,
+                "ratingsCount": 1,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.1.1.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "comicsContent": true,
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=QpaTDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=QpaTDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=QpaTDwAAQBAJ&printsec=frontcover&dq=avengers+infinity+war&hl=&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=QpaTDwAAQBAJ&dq=avengers+infinity+war&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Marvel_s_Avengers.html?hl=&id=QpaTDwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "NP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "NP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Marvel_s_Avengers-sample-pdf.acsm?id=QpaTDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=QpaTDwAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Now, go behind the scenes with this keepsake volume!"
+            }
+        }
+    ]
+}
