@@ -8,5 +8,5 @@ def matmul_graph():
 
 # Get concrete function and print graph operations
 concrete_func = matmul_graph.get_concrete_function()
-for op in concrete_func.graph.get_operations():
+for op in concrete_func.graph.get_operations():  # type: ignore
     print(op.name)

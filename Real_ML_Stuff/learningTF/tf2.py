@@ -22,6 +22,6 @@ print(f" result_min = {tf.reduce_min(a)} ")
 print(f" result_mean = {tf.reduce_mean(a)} ")
 
 #broadcasting and slicing
-print(f" Slicing = {a[0,0]}" )
-result_c = a+b
+print(f" Slicing = {a[0,0]}" ) # type: ignore
+result_c = a+b # type: ignore
 print(f" Broadcasting = {result_c}")
