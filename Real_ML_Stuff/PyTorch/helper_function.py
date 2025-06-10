@@ -37,3 +37,10 @@ def plot_decision_boundary(model: torch.nn.Module, X: torch.Tensor, y: torch.Ten
     plt.scatter(X[:, 0], X[:, 1], c=y, s=40, cmap=plt.cm.RdYlBu) # type: ignore
     plt.xlim(xx.min(), xx.max())
     plt.ylim(yy.min(), yy.max())
+
+    # calculate accuracy
+# formula: True Positive / (True Positive + True Negative) * 100
+def accuracy_fn(y_true, y_pred):
+    correct = torch.eq(y_true, y_pred).sum().item()
+    acc = (correct/ len(y_pred)) * 100
+    return acc
