@@ -1,0 +1,3 @@
+An apple a day keeps the doctor away. today is 2082-03-12 thursday.
+Hello, my name is Bishal Shrestha.
+I am learning Natural Language Processing (NLP).

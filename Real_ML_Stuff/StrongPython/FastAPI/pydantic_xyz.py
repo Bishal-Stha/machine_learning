@@ -5,8 +5,8 @@ class Register(BaseModel):
     email: EmailStr
 
 try:
-    user = Register(username="bob", email="bishal@gmail.com")
-    print(user.model_dump_json())
-    print(user.model_dump())
+    user = Register(username="bob", email="bishal@gmail.com") #type: ignore
+    print(user.model_dump_json()) #type: ignore
+    print(user.model_dump()) #type: ignore
 except ValidationError as e:
     print(e)
