@@ -15,3 +15,6 @@ __pycache__/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+Natural_Language_processing/NLP_Projects/IMDB Dataset.csv
+
