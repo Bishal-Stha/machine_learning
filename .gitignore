@@ -16,5 +16,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-Natural_Language_processing/NLP_Projects/IMDB Dataset.csv
+Natural_Language_processing/NLP_Projects/*.csv
+
 
