@@ -12,5 +12,5 @@ print("🔥",type(clean_support_call2))
 # text = recognizer.recognize_google(audio_data=clean_support_call, language="en-US")
 # # print("💎",text)
 
-text2 = recognizer.recognize_google(audio_data=clean_support_call2, language="en-US")
+text2 = recognizer.recognize_google(audio_data=clean_support_call2, language="en-US") # type: ignore
 print("💎",text2)
