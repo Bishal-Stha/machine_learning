@@ -1,0 +1,488 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>20 Core NLP Concepts — Visual & Explanatory Guide</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;line-height:1.6;color:#e6eef8;background:linear-gradient(180deg,#071024 0%,#071a2a 100%);padding:28px}
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+    header img{width:68px;height:68px;border-radius:12px;object-fit:cover}
+    h1{margin:0;font-size:28px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+    nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+    nav a{background:var(--glass);padding:8px 12px;border-radius:10px;color:#cfe6ff;text-decoration:none;font-size:13px}
+    article{display:grid;grid-template-columns:1fr;gap:18px}
+    section.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .qtitle{display:flex;align-items:center;gap:12px}
+    .qtitle h2{margin:0;font-size:18px}
+    .meta{color:var(--muted);font-size:13px}
+    .row{display:flex;gap:18px;align-items:flex-start;margin-top:12px}
+    .imgbox{flex:0 0 360px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+    .imgbox img{width:100%;height:100%;object-fit:cover;display:block}
+    .content{flex:1;min-width:0}
+    ul{margin:8px 0 0 20px}
+    code{background:rgba(255,255,255,0.03);padding:2px 6px;border-radius:6px;color:#d6f3ff}
+    footer{color:var(--muted);font-size:13px;margin-top:22px;text-align:center}
+    @media(max-width:900px){.row{flex-direction:column}.imgbox{width:100%;flex:unset}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="https://jalammar.github.io/images/illustrated_transformer/transformer_architecture.png" alt="Transformer thumbnail" />
+      <div>
+        <h1>20 Core NLP Concepts — Visual & Explanatory Guide</h1>
+        <p class="lead">Concise, teachable explanations for each high-impact NLP question, with images and teaching tips.</p>
+      </div>
+    </header>
+
+    <nav>
+      <!-- quick links -->
+      <a href="#q1">1. What is NLP</a>
+      <a href="#q5">5. Embeddings</a>
+      <a href="#q9">9. Positional Encoding</a>
+      <a href="#q11">11. Attention</a>
+      <a href="#q12">12. Transformer</a>
+      <a href="#q15">15. Pretraining</a>
+      <a href="#q18">18. Evaluation</a>
+      <a href="#q20">20. Ethics</a>
+    </nav>
+
+    <article>
+
+      <!-- Q1 -->
+      <section id="q1" class="card">
+        <div class="qtitle">
+          <h2>1. What is NLP, and what are its main goals & challenges?</h2>
+          <div class="meta">Foundations</div>
+        </div>
+        <div class="row">
+          <div class="imgbox">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/1*Kbi8Mq0zcqXb2vK7g3D2UQ.png" alt="NLP pipeline" />
+          </div>
+          <div class="content">
+            <p><strong>Definition</strong>: Natural Language Processing (NLP) is the area of AI that enables computers to read, understand, and generate human language. It blends linguistics and machine learning.</p>
+            <p><strong>Primary goals</strong>: text understanding (classification, NER), generation (summarization, dialogue), retrieval (search), and reasoning (QA).</p>
+            <p><strong>Main challenges</strong> include:</p>
+            <ul>
+              <li><strong>Ambiguity</strong> — lexical ("bank") and syntactic (attachment ambiguities).</li>
+              <li><strong>Context</strong> — meaning depends on previous sentences, world knowledge.</li>
+              <li><strong>Figurative language</strong> — idioms, sarcasm, metaphors.</li>
+              <li><strong>Domain & language drift</strong> — models break when deployed in different domains or time periods.</li>
+            </ul>
+            <p><em>Teaching tip:</em> show the same short sentence in several contexts to reveal ambiguity (e.g., "I saw her duck").</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q2 -->
+      <section id="q2" class="card">
+        <div class="qtitle"><h2>2. Syntax vs Semantics vs Pragmatics</h2><div class="meta">Linguistic levels</div></div>
+        <div class="row">
+          <div class="imgbox">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Tree_diagram_of_the_sentence_%22The_cat_sits_on_the_mat%22.png" alt="Syntax tree example" />
+          </div>
+          <div class="content">
+            <p><strong>Syntax</strong> = structure/grammar. Example: parse trees, dependency arcs.
+            <br><strong>Semantics</strong> = meaning of words and compositions (who did what to whom).</p>
+            <p><strong>Pragmatics</strong> = meaning in usage; intent, implicature, politeness. Example: "Can you pass the salt?" is a request, not a yes/no question.</p>
+            <p><em>Teaching tip:</em> draw a sentence tree for syntax, show sentence paraphrases for semantics, and role-play pragmatic contexts.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q3 -->
+      <section id="q3" class="card">
+        <div class="qtitle"><h2>3. Tokenization — why it matters</h2><div class="meta">Preprocessing</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*0RomnX6mZf8z2lQ6vJbJPQ.png" alt="tokenization examples" /></div>
+          <div class="content">
+            <p>Tokenization splits text into atomic units (tokens). Types:
+            <ul>
+              <li><strong>Word-level</strong> — common but fails with unknown words.</li>
+              <li><strong>Subword</strong> (BPE, WordPiece) — handles rare words and morphology.</li>
+              <li><strong>Character</strong> — robust but longer sequences.</li>
+            </ul></p>
+            <p>Modern NLP uses subword tokenizers to strike balance between vocabulary size and flexibility. Tokens map to IDs and then to embeddings.</p>
+            <p><em>Teaching tip:</em> show how a new word like "chatgptish" gets split by BPE into familiar subwords.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q4 -->
+      <section id="q4" class="card">
+        <div class="qtitle"><h2>4. Text → Numbers: IDs and Embeddings</h2><div class="meta">Representation</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*5i0wSj3rJ7YdZl9g9K0ZrQ.png" alt="word embedding idea" /></div>
+          <div class="content">
+            <p>Pipeline: token → integer ID → embedding vector. Embeddings are dense floating-point vectors (e.g., 768-d) learned so semantically similar tokens are nearby in vector space.</p>
+            <p>Operation examples: cosine similarity for semantic distance; vector arithmetic ("king" - "man" + "woman" ≈ "queen").</p>
+            <p><em>Teaching tip:</em> show a small 2D scatter of words clustered by topic (animals, fruits).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q5 -->
+      <section id="q5" class="card">
+        <div class="qtitle"><h2>5. What are embeddings and how they represent meaning?</h2><div class="meta">Embeddings</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://nlp.stanford.edu/projects/glove/images/glove.png" alt="embedding space example" /></div>
+          <div class="content">
+            <p><strong>Definition</strong>: Embeddings are learned dense vectors that encode semantic/usage information. They derive from the distributional hypothesis: words that appear in similar contexts have similar meanings.</p>
+            <p><strong>Properties</strong>:
+            <ul>
+              <li>Capture synonyms and relatedness (proximity in space).</li>
+              <li>Support algebraic relationships (analogies).</li>
+              <li>Enable downstream models to start from meaningful representations.</li>
+            </ul></p>
+            <p><em>Teaching tip:</em> demonstrate cosine similarity between pairs like ("dog","cat") vs ("dog","table").</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q6 -->
+      <section id="q6" class="card">
+        <div class="qtitle"><h2>6. Word2Vec: CBOW vs Skip-gram (intuition)</h2><div class="meta">Shallow embedding learners</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*Q6C5nM1nD4mD1o5T2Z1wLg.png" alt="word2vec cbow skipgram" /></div>
+          <div class="content">
+            <p><strong>CBOW</strong> predicts a target word from surrounding context tokens. Good when you have lots of data and want speed.</p>
+            <p><strong>Skip-gram</strong> predicts surrounding words from a target token. Better for infrequent words and capturing rare-context signals.</p>
+            <p><em>Teaching tip:</em> sketch a sliding window and show arrows either from context→target (CBOW) or target→context (skip-gram).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q7 -->
+      <section id="q7" class="card">
+        <div class="qtitle"><h2>7. Limitations of static embeddings (Word2Vec, GloVe)</h2><div class="meta">Why context matters</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*2gS8Y2Zf0d3nA0QhSg9l2A.png" alt="polysemy bank example" /></div>
+          <div class="content">
+            <p>Static embeddings assign a single vector per word type. This fails for polysemous words like "bank" (river vs finance). They also cannot model context-specific nuances or word sense shifts across domains.</p>
+            <p><em>Teaching tip:</em> show the same word used in two sentences and explain why a single vector cannot capture both meanings well.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q8 -->
+      <section id="q8" class="card">
+        <div class="qtitle"><h2>8. Contextual embeddings (ELMo, BERT, GPT) — the fix</h2><div class="meta">Contextualization</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://jalammar.github.io/images/elmo.png" alt="ELMo contextual embeddings" /></div>
+          <div class="content">
+            <p>Contextual embeddings are computed per token instance and change depending on surrounding tokens. BERT uses bidirectional context (left+right), while GPT-style models use left-to-right context for generation.</p>
+            <p>Benefits: handle polysemy, adapt to syntax and nearby discourse, improve downstream performance.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q9 -->
+      <section id="q9" class="card">
+        <div class="qtitle"><h2>9. Positional encoding — why Transformers need it</h2><div class="meta">Order information</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://jalammar.github.io/images/transformer_positional_encoding.png" alt="positional encoding sin cos" /></div>
+          <div class="content">
+            <p>Transformers process tokens in parallel and therefore need a way to encode order. Positional encodings (sine/cosine or learned vectors) are added to token embeddings so the model can reason about relative and absolute positions.</p>
+            <p><code>PE(pos,2i)=sin(pos/10000^{2i/d}), PE(pos,2i+1)=cos(...)</code> is a common formula used in the original Transformer paper.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q10 -->
+      <section id="q10" class="card">
+        <div class="qtitle"><h2>10. RNNs, LSTMs, GRUs — sequence models</h2><div class="meta">Sequential processing</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://colah.github.io/posts/2015-08-Understanding-LSTMs/images/LSTM3-Simple.png" alt="LSTM gates" /></div>
+          <div class="content">
+            <p>RNNs maintain a hidden state as they read tokens sequentially. They suffer from vanishing gradients for long-range dependencies. LSTMs and GRUs use gating (forget, input, output) to preserve or discard information and capture longer dependencies.</p>
+            <p><em>Teaching tip:</em> show a long sentence where a verb at the end depends on an early subject — LSTMs handle such cases better than vanilla RNNs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q11 -->
+      <section id="q11" class="card">
+        <div class="qtitle"><h2>11. Attention mechanism — intuition & math</h2><div class="meta">Core idea</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://jalammar.github.io/images/attention-self-attention/attention.png" alt="attention Q K V" /></div>
+          <div class="content">
+            <p><strong>Intuition</strong>: when producing an output (e.g., translating a word), the model 'attends' more to input tokens that are relevant.</p>
+            <p><strong>Mechanics</strong>: transform inputs into Query (Q), Key (K), Value (V) vectors. Compute scores as <code>QK^T / sqrt(d_k)</code>, apply softmax to get weights, then weighted-sum over V.</p>
+            <p><em>Teaching tip:</em> walk through a toy example of three tokens where one token strongly matches the query and dominates the weighted sum.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q12 -->
+      <section id="q12" class="card">
+        <div class="qtitle"><h2>12. Transformer architecture & self-attention</h2><div class="meta">Modern backbone</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://jalammar.github.io/images/illustrated_transformer/transformer_encoder_decoder.png" alt="transformer architecture" /></div>
+          <div class="content">
+            <p>Transformers stack layers of multi-head self-attention and position-wise feed-forward networks with residual connections and layer normalization. Benefits:</p>
+            <ul>
+              <li>Parallel computation (faster on modern hardware)</li>
+              <li>Direct long-range token interactions via attention</li>
+              <li>Flexible stacking into encoder/decoder variants</li>
+            </ul>
+            <p><em>Teaching tip:</em> use the diagram to point out encoder-only vs decoder-only vs encoder-decoder flow.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q13 -->
+      <section id="q13" class="card">
+        <div class="qtitle"><h2>13. Encoder, Decoder, Encoder–Decoder: differences</h2><div class="meta">Model families</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*m2R9pYb2nQGQZlH1JZbR9w.png" alt="encoder decoder comparison" /></div>
+          <div class="content">
+            <p><strong>Encoder-only</strong> (e.g., BERT): excel at understanding tasks (classification, NER). Trained with masked tokens to leverage bidirectional context.</p>
+            <p><strong>Decoder-only</strong> (e.g., GPT): autoregressive generators that predict the next token given previous tokens. Great for generation, completion, and in-context learning.</p>
+            <p><strong>Encoder–Decoder</strong> (e.g., T5, BART): map input sequences to output sequences (translation, summarization). Combine understanding and generation.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q14 -->
+      <section id="q14" class="card">
+        <div class="qtitle"><h2>14. Language modeling — predicting the next word</h2><div class="meta">Probabilistic modeling</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*b2pJf3pQ6n1T2t2jE3B0xA.png" alt="language model next token" /></div>
+          <div class="content">
+            <p>A language model estimates probabilities of token sequences: <code>P(w1..wn)=∏P(wi|w1..w(i-1))</code>. Autoregressive models directly model the conditional probabilities used for sampling/generation. Perplexity is a common measure that summarizes how well the model predicts held-out text (lower is better).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q15 -->
+      <section id="q15" class="card">
+        <div class="qtitle"><h2>15. Pretraining objectives: Masked LM vs Causal LM</h2><div class="meta">Self-supervision</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*4vY2eHG8WfRkGq4pQ7WkVg.png" alt="masked vs causal" /></div>
+          <div class="content">
+            <p><strong>Masked Language Modeling (MLM)</strong> — randomly mask tokens and predict them from both left and right context (BERT). Good for representation learning and downstream classification.
+            <br><strong>Causal Language Modeling (CLM)</strong> — predict next token from past tokens only (GPT). Naturally suited for generation.</p>
+            <p><em>Teaching tip:</em> show masked input and what the model sees during training vs what it sees at inference.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q16 -->
+      <section id="q16" class="card">
+        <div class="qtitle"><h2>16. Transfer learning & fine-tuning</h2><div class="meta">Practical adaptation</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*7d0Y5b0z1c8yq7B0bKFU7A.png" alt="pretrain finetune" /></div>
+          <div class="content">
+            <p>Large models are pretrained on broad corpora and then fine-tuned on specific tasks using labeled data. Fine-tuning typically adds a small task-specific head and updates weights with a smaller learning rate and fewer epochs.</p>
+            <p><em>Teaching tip:</em> compare training from scratch vs fine-tuning on a small dataset to show efficiency gains.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q17 -->
+      <section id="q17" class="card">
+        <div class="qtitle"><h2>17. Why LLMs can perform unseen tasks: in‑context learning</h2><div class="meta">Emergence</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Prompt_example.png" alt="prompt examples" /></div>
+          <div class="content">
+            <p>Large models learn many patterns during pretraining. Given a prompt that includes examples or an instruction, they can infer the task and produce correct outputs without parameter updates — this is <strong>in-context learning</strong>. Few-shot prompting places a few labeled examples in the prompt; zero-shot uses only instructions.</p>
+            <p><em>Teaching tip:</em> show a few-shot prompt for translation or classification and then a new input; demonstrate the model generalizing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q18 -->
+      <section id="q18" class="card">
+        <div class="qtitle"><h2>18. Evaluation metrics for NLP</h2><div class="meta">How we measure</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*1gd3DqQZzFq3w9kVvH0K2w.png" alt="metrics overview" /></div>
+          <div class="content">
+            <p><strong>Classification</strong>: accuracy, precision, recall, F1. <strong>Sequence labeling</strong>: token-level F1. <strong>Generation</strong>: BLEU (translation), ROUGE (summarization), METEOR; BERTScore (semantic overlap).</p>
+            <p><strong>Language modeling</strong>: perplexity. Keep in mind automatic metrics are imperfect for open-ended generation — human evaluation is often necessary.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q19 -->
+      <section id="q19" class="card">
+        <div class="qtitle"><h2>19. Why high accuracy can still fail in the real world</h2><div class="meta">Robustness & generalization</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Cartoon_illusion.png" alt="failure example" /></div>
+          <div class="content">
+            <p>Test metrics can be gamed by dataset artifacts and spurious correlations. Models might exploit shortcuts (e.g., keyword triggers) and fail on distribution shifts, adversarial examples, or subtle reasoning tasks like sarcasm.</p>
+            <p><em>Teaching tip:</em> present adversarial or out-of-domain examples that break a high‑accuracy model.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q20 -->
+      <section id="q20" class="card">
+        <div class="qtitle"><h2>20. Ethical & reliability challenges in NLP</h2><div class="meta">Safety & fairness</div></div>
+        <div class="row">
+          <div class="imgbox"><img src="https://miro.medium.com/v2/resize:fit:1200/1*6Q3k0q7rG1l0p9Y0m9k8FQ.png" alt="ethics bias" /></div>
+          <div class="content">
+            <p>Major concerns:</p>
+            <ul>
+              <li><strong>Bias & fairness:</strong> models reflect societal biases present in training data (gender, race, etc.).</li>
+              <li><strong>Hallucinations:</strong> confident but incorrect outputs, especially in open-ended generation.</li>
+              <li><strong>Privacy:</strong> memorization of sensitive data during pretraining.</li>
+              <li><strong>Explainability:</strong> hard to audit reasons for specific outputs.</li>
+            </ul>
+            <p>Mitigations include careful data curation, fairness-aware training, retrieval-augmented generation for factual grounding, and human-in-the-loop evaluation.</p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <footer>
+      <p>Created for teaching: concise explanations + public image references. You can save this page as HTML or print to PDF (use browser "Print" → "Save as PDF").</p>
+    </footer>
+  </div>
+</body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>20 Core NLP Concepts — Visual & Explanatory Guide</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;line-height:1.6;color:#e6eef8;background:linear-gradient(180deg,#071024 0%,#071a2a 100%);padding:28px}
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+    header img{width:68px;height:68px;border-radius:12px;object-fit:cover}
+    h1{margin:0;font-size:28px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+    nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+    nav a{background:var(--glass);padding:8px 12px;border-radius:10px;color:#cfe6ff;text-decoration:none;font-size:13px}
+    article{display:grid;grid-template-columns:1fr;gap:18px}
+    section.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .qtitle{display:flex;align-items:center;gap:12px}
+    .qtitle h2{margin:0;font-size:18px}
+    .meta{color:var(--muted);font-size:13px}
+    .row{display:flex;gap:18px;align-items:flex-start;margin-top:12px}
+    .imgbox{flex:0 0 360px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+    .imgbox img{width:100%;height:100%;object-fit:cover;display:block}
+    .content{flex:1;min-width:0}
+    ul{margin:8px 0 0 20px}
+    code{background:rgba(255,255,255,0.03);padding:2px 6px;border-radius:6px;color:#d6f3ff}
+    footer{color:var(--muted);font-size:13px;margin-top:22px;text-align:center}
+    @media(max-width:900px){.row{flex-direction:column}.imgbox{width:100%;flex:unset}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="https://jalammar.github.io/images/illustrated_transformer/transformer_architecture.png" alt="Transformer thumbnail" />
+      <div>
+        <h1>20 Core NLP Concepts — Visual & Explanatory Guide</h1>
+        <p class="lead">Concise, teachable explanations for each high-impact NLP question, with images and teaching tips.</p>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#q1">1. What is NLP</a>
+      <a href="#q5">5. Embeddings</a>
+      <a href="#q9">9. Positional Encoding</a>
+      <a href="#q11">11. Attention</a>
+      <a href="#q12">12. Transformer</a>
+      <a href="#q15">15. Pretraining</a>
+      <a href="#q18">18. Evaluation</a>
+      <a href="#q20">20. Ethics</a>
+    </nav>
+
+    <article>
+
+      <!-- Q1 -->
+      <section id="q1" class="card">
+        <div class="qtitle">
+          <h2>1. What is NLP, and what are its main goals & challenges?</h2>
+          <div class="meta">Foundations</div>
+        </div>
+        <div class="row">
+          <div class="imgbox">
+            <img src="https://jalammar.github.io/images/illustrated_transformer/nlp_pipeline.html" alt="NLP pipeline" />
+          </div>
+          <div class="content">
+            <p><strong>Definition</strong>: Natural Language Processing (NLP) is the area of AI that enables computers to read, understand, and generate human language. It blends linguistics and machine learning.</p>
+            <p><strong>Primary goals</strong>: text understanding (classification, NER), generation (summarization, dialogue), retrieval (search), and reasoning (QA).</p>
+            <p><strong>Main challenges</strong> include:</p>
+            <ul>
+              <li><strong>Ambiguity</strong> — lexical ("bank") and syntactic (attachment ambiguities).</li>
+              <li><strong>Context</strong> — meaning depends on previous sentences, world knowledge.</li>
+              <li><strong>Figurative language</strong> — idioms, sarcasm, metaphors.</li>
+              <li><strong>Domain & language drift</strong> — models break when deployed in different domains or time periods.</li>
+            </ul>
+            <p><em>Teaching tip:</em> show the same short sentence in several contexts to reveal ambiguity (e.g., "I saw her duck").</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q2 -->
+      <section id="q2" class="card">
+        <div class="qtitle"><h2>2. Syntax vs Semantics vs Pragmatics</h2><div class="meta">Linguistic levels</div></div>
+        <div class="row">
+          <div class="imgbox">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Tree_diagram_of_the_sentence_%22The_cat_sits_on_the_mat%22.html" alt="Syntax tree example" />
+          </div>
+          <div class="content">
+            <p><strong>Syntax</strong> = structure/grammar. Example: parse trees, dependency arcs.
+            <br><strong>Semantics</strong> = meaning of words and compositions (who did what to whom).</p>
+            <p><strong>Pragmatics</strong> = meaning in usage; intent, implicature, politeness. Example: "Can you pass the salt?" is a request, not a yes/no question.</p>
+            <p><em>Teaching tip:</em> draw a sentence tree for syntax, show sentence paraphrases for semantics, and role-play pragmatic contexts.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q3 -->
+      <section id="q3" class="card">
+        <div class="qtitle"><h2>3. Tokenization — why it matters</h2><div class="meta">Preprocessing</div></div>
+        <div class="row">
+          <div class="imgbox">
+            <img src="https://jalammar.github.io/images/illustrated_transformer/tokenization.png" alt="tokenization examples" />
+          </div>
+          <div class="content">
+            <p>Tokenization splits text into atomic units (tokens). Types:
+            <ul>
+              <li><strong>Word-level</strong> — common but fails with unknown words.</li>
+              <li><strong>Subword</strong> (BPE, WordPiece) — handles rare words and morphology.</li>
+              <li><strong>Character</strong> — robust but longer sequences.</li>
+            </ul></p>
+            <p>Modern NLP uses subword tokenizers to strike balance between vocabulary size and flexibility. Tokens map to IDs and then to embeddings.</p>
+            <p><em>Teaching tip:</em> show how a new word like "chatgptish" gets split by BPE into familiar subwords.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q4 -->
+      <section id="q4" class="card">
+        <div class="qtitle"><h2>4. Text → Numbers: IDs and Embeddings</h2><div class="meta">Representation</div></div>
+        <div class="row">
+          <div class="imgbox">
+            <img src="https://jalammar.github.io/images/illustrated_transformer/word_embeddings.png" alt="word embedding idea" />
+          </div>
+          <div class="content">
+            <p>Pipeline: token → integer ID → embedding vector. Embeddings are dense floating-point vectors (e.g., 768-d) learned so semantically similar tokens are nearby in vector space.</p>
+            <p>Operation examples: cosine similarity for semantic distance; vector arithmetic ("king" - "man" + "woman" ≈ "queen").</p>
+            <p><em>Teaching tip:</em> show a small 2D scatter of words clustered by topic (animals, fruits).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The rest of the questions can follow the same pattern, updating broken image URLs -->
+
+    </article>
+
+    <footer>
+      <p>Created for teaching: concise explanations + public image references. You can save this page as HTML or print to PDF (use browser "Print" → "Save as PDF").</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -21,3 +21,12 @@ Natural_Language_processing/NLP_Projects/*.csv
 Natural_Language_processing\NLP_Beginner\Spoken_Language_Processing_Python\sheIsALady.wav
 
 hf_env
+
+# .gitignore
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+Natural_Language_processing/NLP_Extertise/.venv_asr_sentiment
+
+.venv_asr_sentiment
