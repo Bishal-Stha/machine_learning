@@ -1,0 +1,1 @@
+.\.venv_asr_sentiment\Scripts\activate
