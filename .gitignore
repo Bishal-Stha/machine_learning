@@ -27,6 +27,8 @@ hf_env
 __pycache__/
 *.pyc
 *.pyo
-Natural_Language_processing/NLP_Extertise/.venv_asr_sentiment
+Natural_Language_processing/NLP_Extertise/.venv_hf_models
 
-.venv_asr_sentiment
+.venv_hf_models
+.venv_fineTuning
+Natural_Language_processing/NLP_Extertise/.venv_fineTuning
