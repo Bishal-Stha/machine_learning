@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ML → MLOps → LLMOps Progress Dashboard</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 20px;
+}
+h1, h2, h3 {
+    color: #38bdf8;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+.task {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+}
+.task input {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+.progress {
+    background: #1e293b;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+.progress-bar {
+    height: 20px;
+    background: #22c55e;
+    width: 0%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    color: #022c22;
+}
+.footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+hr {
+    border: none;
+    border-top: 1px solid #334155;
+    margin: 25px 0;
+}
+/* 🎉 Celebration popup */
+.celebration {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #22c55e;
+    color: #022c22;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+
+.celebration.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Timer styling */
+#timerContainer {
+    background: #1e293b;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#timerInput {
+    width: 60px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+#startTimer, #resetTimer, #pauseTimer {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #22c55e;
+    color: #022c22;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+#startTimer:hover, #resetTimer:hover, #pauseTimer:hover {
+    background: #16a34a;
+}
+
+#timerDisplay {
+    font-size: 18px;
+    font-weight: bold;
+    color: #facc15;
+    min-width: 70px;
+    text-align: center;
+}
+
+/* Deadline Countdown */
+#deadlineContainer {
+    background: #020617;
+    border: 1px solid #334155;
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+#deadlineContainer label {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+#deadlineContainer input {
+    background: #0f172a;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+    padding: 4px 6px;
+    border-radius: 6px;
+}
+
+#deadlineDisplay {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #facc15;
+}
+
+
+
+</style>
+</head>
+
+<div id="celebration" class="celebration">
+🎉 Well done. You earned this.
+</div>
+
+
+<body>
+<div class="container">
+
+<h1>ML → MLOps → LLMOps 2026 Progress</h1>
+
+<div id="deadlineContainer">
+  <label>Start Date:</label>
+  <input type="date" id="startDate">
+
+  <label>Target Date:</label>
+  <input type="date" id="endDate">
+
+  <div id="deadlineDisplay">
+    ⏳ Set your mission timeline
+  </div>
+</div>
+
+
+<div class="container">
+
+<h1>NLP → LLM → LLMOps Progress Dashboard (2026)</h1>
+
+<p>
+Tick only when you can confidently say: <br>
+<strong>“I understand this AND I have implemented it at least once.”</strong>
+</p>
+
+<div class="progress">
+  <div id="progressBar" class="progress-bar">0%</div>
+</div>
+
+<!-- ================= PHASE 0 ================= -->
+
+<h2>Phase 0 — NLP Foundations (NON-NEGOTIABLE)</h2>
+
+<h3>Text Basics (Learn)</h3>
+<div class="task"><input type="checkbox">What tokenization actually is</div>
+<div class="task"><input type="checkbox">Word vs subword tokens (intuition)</div>
+<div class="task"><input type="checkbox">Stopwords: when removal hurts</div>
+<div class="task"><input type="checkbox">Stemming vs lemmatization tradeoffs</div>
+
+<h3>Text → Numbers (Learn)</h3>
+<div class="task"><input type="checkbox">Bag of Words intuition</div>
+<div class="task"><input type="checkbox">TF-IDF (why it exists)</div>
+<div class="task"><input type="checkbox">Vocabulary size & sparsity problem</div>
+<div class="task"><input type="checkbox">Why text vectors are high-dimensional</div>
+
+<h3>Classical NLP Models (Apply)</h3>
+<div class="task"><input type="checkbox">Naive Bayes for text</div>
+<div class="task"><input type="checkbox">Logistic Regression for text</div>
+<div class="task"><input type="checkbox">Why linear models work well in NLP</div>
+
+<h3>NLP Evaluation (Master)</h3>
+<div class="task"><input type="checkbox">Precision vs Recall intuition</div>
+<div class="task"><input type="checkbox">F1 score for imbalanced text</div>
+<div class="task"><input type="checkbox">Confusion matrix reading</div>
+<div class="task"><input type="checkbox">Accuracy failure cases in NLP</div>
+
+<h3>First End-to-End NLP Pipeline</h3>
+<div class="task"><input type="checkbox">Clean raw text dataset</div>
+<div class="task"><input type="checkbox">TF-IDF + Logistic Regression</div>
+<div class="task"><input type="checkbox">Evaluate using F1 score</div>
+<div class="task"><input type="checkbox">Explain errors in plain English</div>
+
+<hr>
+
+<!-- ================= PHASE 1 ================= -->
+
+<h2>Phase 1 — Neural NLP (Representation Learning)</h2>
+
+<h3>Word Embeddings (Learn)</h3>
+<div class="task"><input type="checkbox">Why one-hot vectors fail</div>
+<div class="task"><input type="checkbox">Word2Vec intuition (geometry)</div>
+<div class="task"><input type="checkbox">GloVe idea (co-occurrence)</div>
+
+<h3>Sequence Models (Conceptual)</h3>
+<div class="task"><input type="checkbox">Why word order matters</div>
+<div class="task"><input type="checkbox">RNN limitation</div>
+<div class="task"><input type="checkbox">LSTM intuition</div>
+<div class="task"><input type="checkbox">Why attention replaces recurrence</div>
+
+<h3>Transformers (Core)</h3>
+<div class="task"><input type="checkbox">Self-attention intuition (Q, K, V)</div>
+<div class="task"><input type="checkbox">Encoder vs Decoder roles</div>
+<div class="task"><input type="checkbox">Why transformers scale</div>
+
+<h3>Pretrained Models (Apply)</h3>
+<div class="task"><input type="checkbox">What BERT is actually trained to do</div>
+<div class="task"><input type="checkbox">Fine-tuning vs training from scratch</div>
+<div class="task"><input type="checkbox">Fine-tune BERT for one task</div>
+
+<hr>
+
+<!-- ================= PHASE 2 ================= -->
+
+<h2>Phase 2 — LLM Systems (Applied NLP)</h2>
+
+<h3>Embeddings in Practice</h3>
+<div class="task"><input type="checkbox">Sentence embeddings</div>
+<div class="task"><input type="checkbox">Cosine similarity intuition</div>
+<div class="task"><input type="checkbox">Semantic search basics</div>
+
+<h3>Retrieval-Augmented Generation (RAG)</h3>
+<div class="task"><input type="checkbox">Chunking strategies</div>
+<div class="task"><input type="checkbox">Embedding documents</div>
+<div class="task"><input type="checkbox">Retriever + generator pipeline</div>
+<div class="task"><input type="checkbox">End-to-end RAG system</div>
+
+<h3>LLM Failure Modes</h3>
+<div class="task"><input type="checkbox">Hallucination patterns</div>
+<div class="task"><input type="checkbox">Prompt brittleness</div>
+<div class="task"><input type="checkbox">Evaluation difficulty</div>
+
+<hr>
+
+<!-- ================= PHASE 3 ================= -->
+
+<h2>Phase 3 — LLMOps (SYSTEMS & SCALE)</h2>
+
+<h3>Deployment & Optimization</h3>
+<div class="task"><input type="checkbox">LLM API deployment</div>
+<div class="task"><input type="checkbox">Latency & cost tracking</div>
+<div class="task"><input type="checkbox">Batching & streaming</div>
+<div class="task"><input type="checkbox">Quantization basics</div>
+
+<h3>Advanced LLMOps</h3>
+<div class="task"><input type="checkbox">LoRA / QLoRA fine-tuning</div>
+<div class="task"><input type="checkbox">Multi-model routing</div>
+<div class="task"><input type="checkbox">Agent workflows</div>
+<div class="task"><input type="checkbox">Evaluation-driven optimization</div>
+
+<hr>
+
+<h2>Final Proof</h2>
+<div class="task"><input type="checkbox">Public NLP project on GitHub</div>
+<div class="task"><input type="checkbox">Working RAG application</div>
+<div class="task"><input type="checkbox">LLM system deployed</div>
+<div class="task"><input type="checkbox">Ready for NLP / LLM interviews</div>
+
+<div class="footer">
+This dashboard reflects **real skill acquisition**, not busywork.  
+Slow progress here still beats fake confidence.
+</div>
+
+</div>
+
+<!-- <script>
+const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+checkboxes.forEach((cb, i) => {
+    const saved = localStorage.getItem("task_" + i);
+    if (saved === "true") cb.checked = true;
+});
+
+function updateProgress() {
+    let checked = 0;
+    checkboxes.forEach((cb, i) => {
+        localStorage.setItem("task_" + i, cb.checked);
+        if (cb.checked) checked++;
+    });
+    const percent = Math.round((checked / checkboxes.length) * 100);
+    const bar = document.getElementById("progressBar");
+    bar.style.width = percent + "%";
+    bar.textContent = percent + "%";
+}
+
+checkboxes.forEach(cb => cb.addEventListener("change", updateProgress));
+updateProgress();
+</script> -->
+<script>
+const checkboxes = document.querySelectorAll("input[type='checkbox']");
+const celebration = document.getElementById("celebration");
+
+// Load saved state
+checkboxes.forEach((cb, i) => {
+    const saved = localStorage.getItem("task_" + i);
+    if (saved === "true") cb.checked = true;
+});
+
+function showCelebration() {
+    celebration.classList.add("show");
+    setTimeout(() => {
+        celebration.classList.remove("show");
+    }, 1400);
+}
+
+function updateProgress(e) {
+    let checked = 0;
+
+    checkboxes.forEach((cb, i) => {
+        localStorage.setItem("task_" + i, cb.checked);
+        if (cb.checked) checked++;
+    });
+
+    const percent = Math.round((checked / checkboxes.length) * 100);
+    const bar = document.getElementById("progressBar");
+    bar.style.width = percent + "%";
+    bar.textContent = percent + "%";
+
+    // 🎉 Celebrate only when ticking ON
+    if (e && e.target.checked) {
+        showCelebration();
+    }
+}
+
+checkboxes.forEach(cb =>
+    cb.addEventListener("change", updateProgress)
+);
+
+updateProgress();
+
+// ================= Timer Logic with Pause =================
+let timerInterval;
+let remainingSeconds = 0;
+let isPaused = false;
+
+const timerInput = document.getElementById("timerInput");
+const startButton = document.getElementById("startTimer");
+const pauseButton = document.getElementById("pauseTimer");
+const resetButton = document.getElementById("resetTimer");
+const timerDisplay = document.getElementById("timerDisplay");
+
+function updateTimerDisplay() {
+    const mins = Math.floor(remainingSeconds / 60);
+    const secs = remainingSeconds % 60;
+    timerDisplay.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+}
+
+function startTimer() {
+    clearInterval(timerInterval);
+    const minutes = parseInt(timerInput.value);
+    if (isNaN(minutes) || minutes <= 0) return;
+    remainingSeconds = minutes * 60;
+    isPaused = false;
+    updateTimerDisplay();
+
+    timerInterval = setInterval(() => {
+        if (!isPaused) {
+            remainingSeconds--;
+            if (remainingSeconds <= 0) {
+                clearInterval(timerInterval);
+                remainingSeconds = 0;
+                timerDisplay.textContent = "Time's up! ⏰";
+            } else {
+                updateTimerDisplay();
+            }
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    if (remainingSeconds > 0) {
+        isPaused = !isPaused;
+        pauseButton.textContent = isPaused ? "Resume" : "Pause";
+    }
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    remainingSeconds = parseInt(timerInput.value) * 60 || 60*60;
+    isPaused = false;
+    pauseButton.textContent = "Pause";
+    updateTimerDisplay();
+}
+
+startButton.addEventListener("click", startTimer);
+pauseButton.addEventListener("click", pauseTimer);
+resetButton.addEventListener("click", resetTimer);
+updateTimerDisplay();
+
+// ================= Deadline Countdown =================
+const startInput = document.getElementById("startDate");
+const endInput = document.getElementById("endDate");
+const deadlineDisplay = document.getElementById("deadlineDisplay");
+
+// Load saved dates
+startInput.value = localStorage.getItem("ml_start_date") || "";
+endInput.value = localStorage.getItem("ml_end_date") || "";
+
+function updateDeadline() {
+    if (!startInput.value || !endInput.value) return;
+
+    const now = new Date();
+    const end = new Date(endInput.value);
+
+    localStorage.setItem("ml_start_date", startInput.value);
+    localStorage.setItem("ml_end_date", endInput.value);
+
+    let diff = end - now;
+
+    if (diff <= 0) {
+        deadlineDisplay.textContent = "🔥 Deadline reached. Execute.";
+        return;
+    }
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+
+    const remDays = days % 30;
+    const remHours = hours % 24;
+
+    deadlineDisplay.textContent =
+        `⏳ ${months} months ${remDays} days ${remHours} hours left`;
+}
+
+// Update every hour (not every second — less anxiety, more focus)
+setInterval(updateDeadline, 60 * 60 * 1000);
+
+startInput.addEventListener("change", updateDeadline);
+endInput.addEventListener("change", updateDeadline);
+
+updateDeadline();
+
+
+</script>
+
+
+</body>
+</html>
