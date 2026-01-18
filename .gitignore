@@ -36,5 +36,3 @@ Core_ML/EDA
 
 # Python virtual environments
 envs/
-testing
-!/testing/pqr.txt
